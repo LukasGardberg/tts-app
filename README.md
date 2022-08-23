@@ -1,6 +1,7 @@
 ### Start a virtual environment and install necessary packages
 ```
 python3 -m venv env
+source env/bin/activate
 pip install --upgrade pip
 pip install requirements.txt
 ```
