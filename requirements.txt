@@ -1,0 +1,6 @@
+torchaudio
+deep-phonemizer
+matplotlib
+numpy
+pandas
+
