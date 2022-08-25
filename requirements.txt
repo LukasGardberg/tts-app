@@ -3,4 +3,4 @@ deep-phonemizer
 matplotlib
 numpy
 pandas
-
+jupyterlab
