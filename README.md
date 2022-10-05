@@ -11,3 +11,17 @@ pip install -r requirements.txt
 https://pytorch.org/tutorials/intermediate/text_to_speech_with_torchaudio.html# tts-app
 
 test
+
+
+### Running the flask app
+
+Navigate to the 'app' directory. Create the model tacotron by running
+```
+python3 set_up_model.py
+```
+
+Run the application by running
+
+```
+uvicorn main:app --reload
+```

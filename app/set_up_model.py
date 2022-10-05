@@ -1,6 +1,7 @@
 import torch
 import torchaudio
 import pickle
+import os
 
 import IPython
 
@@ -30,12 +31,11 @@ class TtsModel():
 
 
 
-def main():
-    model = TtsModel()
-    with open('tacotron.pkl', 'wb') as handle:
-        pickle.dump(model, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-if __name__ == '__main__':
-    main()
+model = TtsModel()
+model_name = 'tacotron'
+if not os.path.isfile(f"{model_name}.pkl"):
+    with open(f'{model_name}.pkl', 'wb') as handle:
+        pickle.dump(model, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     
