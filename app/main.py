@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 from fastapi import FastAPI
 from pydantic import BaseModel
-from set_up_model import TtsModel
+from app.set_up_model import TtsModel
 from fastapi.responses import FileResponse
 
 app = FastAPI(title="Predicting Wine Class")
