@@ -25,3 +25,15 @@ Run the application by running
 ```
 uvicorn main:app --reload
 ```
+
+### Running with docker
+Build the docker image with:
+
+```
+docker build -t tts-app .
+```
+
+Run the docker with:
+
+```
+docker run --rm -p 80:80 tts-app
