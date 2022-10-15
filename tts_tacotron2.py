@@ -8,19 +8,25 @@ import torchaudio
 # from models.tts_tacotron2 import generate_wav
 # in an API 
 
-device = "cuda" if torch.cuda.is_available() else "cpu"
 
-bundle = torchaudio.pipelines.TACOTRON2_WAVERNN_CHAR_LJSPEECH
-text_processor = bundle.get_text_processor()
-tacotron2 = bundle.get_tacotron2()
-vocoder = bundle.get_vocoder()
+class TtsModel():
+    def __init__(self, bundle, processor, model, vocoder):
+        self.bundle = bundle
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.processor = processor
+        self.tacotron2 = model
+        self.vocoder = vocoder
+        
 
-def generate_wav(text: str):
-
-    with torch.inference_mode():
-        processed, lengths = text_processor(text)
-        spec, spec_lengths, _ = tacotron2.infer(processed, lengths)
-        waveforms, lengths = vocoder(spec, spec_lengths)
-
-    torchaudio.save("output_wavernn.wav", waveforms[0:1].cpu(), sample_rate=vocoder.sample_rate)
-    # What should be returned to the front end?
+    
+    def predict(self, text):
+        with torch.inference_mode():
+            processed, lengths = self.processor(text)
+            processed = processed.to(self.device)
+            lengths = lengths.to(self.device)
+            spec, spec_lengths, _ = self.tacotron2.infer(processed, lengths)
+            waveforms, lengths = self.vocoder(spec, spec_lengths)
+        filename = text.replace(' ', '_')
+        output_filepath = f"{filename}.wav"
+        torchaudio.save(output_filepath, waveforms[0:1].cpu(), sample_rate=self.vocoder.sample_rate)
+        return output_filepath
