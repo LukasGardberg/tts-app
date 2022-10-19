@@ -28,3 +28,5 @@ uvicorn main:app --reload
 
 To try and generate a pre-defined audio clip, go to localhost/generate (e.g http://127.0.0.1:8000/generate).
 This will prompt a file download.
+
+Detta kanske är något? https://stackoverflow.com/questions/73234675/how-to-download-a-file-after-posting-data-using-fastapi
