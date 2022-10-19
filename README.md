@@ -25,3 +25,6 @@ Run the application by running
 ```
 uvicorn main:app --reload
 ```
+
+To try and generate a pre-defined audio clip, go to localhost/generate (e.g http://127.0.0.1:8000/generate).
+This will prompt a file download.

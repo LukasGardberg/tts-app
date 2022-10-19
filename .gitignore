@@ -2,3 +2,4 @@ tts-app/
 env/
 *.wav
 __pycache__/
+*.pkl
